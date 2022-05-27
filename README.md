@@ -154,13 +154,11 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors
-Jorge Calamb√s [Github](https://github.com/JorgeCal123)
+Jorge Calambas [Github](https://github.com/JorgeCal123)
+William Cardozo [Github](https://github.com/William05Cardozo)
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
 
 Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection.
-
-## Users:
-* William05Cardozo 
