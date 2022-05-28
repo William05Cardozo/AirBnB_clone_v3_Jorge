@@ -16,9 +16,11 @@ def teardown(exception):
     """ closes the session """
     storage.close()
 
+
 @app.errorhandler(404)
 def error(exception):
     return jsonify({'error': 'Not found'}), 404
+
 
 if __name__ == "__main__":
 
