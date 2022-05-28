@@ -158,8 +158,7 @@ Jorge Calambas [Github](https://github.com/JorgeCal123)
 William Cardozo [Github](https://github.com/William05Cardozo)
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
-Jorge Calambas - [Github](https://github.com/JorgeCal123)
-William Cardozo - [Github](https://github.com/William05Cardozo)
+
 Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection.
