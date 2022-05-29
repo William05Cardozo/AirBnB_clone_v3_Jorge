@@ -67,4 +67,4 @@ def put_states(state_id=None):
         if key != "__class__":
             setattr(p_state, key, value)
     storage.save()
-    return jsonify(p_state.to_dict()), 201
+    return jsonify(p_state.to_dict()), 200
