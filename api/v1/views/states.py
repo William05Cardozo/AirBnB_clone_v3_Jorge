@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-"""
-Create a new view for State objects that handles
-all default RESTFul API actions
-index from views
-"""
+"""index from views"""
 
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, abort, request
@@ -50,9 +46,9 @@ def post_states():
     """post method states"""
     json_data = request.get_json()
     if not json_data:
-        return jsonify({'Not a JSON'}), 400
+        return jsonify({'error': 'Not a JSON'}), 400
     if "name" not in json_data.keys():
-        return jsonify({"Missing name"}), 400
+        return jsonify({'error': "Missing name"}), 400
     state = State(**json_data)
     storage.save()
     return jsonify(state.to_dict()), 201
@@ -66,7 +62,7 @@ def put_states(state_id=None):
         abort(404)
     json_data = request.get_json()
     if not json_data:
-        return jsonify({'Not a JSON'}), 400
+        return jsonify({'error': 'Not a JSON'}), 400
     for key, value in json_data.items():
         if key != "__class__":
             setattr(p_state, key, value)
