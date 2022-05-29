@@ -21,7 +21,7 @@ def get_states(state_id=None):
     if state_id is None:
         for val_state in storage.all("State").values():
             list_states.append(val_state.to_dict())
-        return jsonify(list_states), 200
+        return jsonify(list_states)
     else:
         state = storage.get("State", state_id)
         if state is not None:
@@ -54,7 +54,6 @@ def post_states():
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
     state = State(**json_data)
-    storage.new(state)
     storage.save()
     return jsonify(state.to_dict()), 201
 

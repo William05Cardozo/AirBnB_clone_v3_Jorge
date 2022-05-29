@@ -7,7 +7,11 @@ all default RESTFul API actions
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, abort, request
 from models import storage
+<<<<<<< HEAD
 from models.amenities import Amenity
+=======
+from models.amenity import Amenity
+>>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
 
 
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
@@ -22,8 +26,13 @@ def get_amenities(amenity_id=None):
             list_amt.append(val_amt.to_dict())
         return jsonify(list_amt), 200
     else:
+<<<<<<< HEAD
         amenit = storage.get("Amenity", amenity_id)
         if amenit is not None:
+=======
+        amenity = storage.get("Amenity", amenity_id)
+        if amenity is not None:
+>>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
             return jsonify(amenity.to_dict())
         else:
             abort(404)
@@ -36,7 +45,11 @@ def delete_amenities(amenity_id=None):
 
     ament = storage.get("Amenity", amenity_id)
     if ament is not None:
+<<<<<<< HEAD
         storage.delete(amenity)
+=======
+        storage.delete(ament)
+>>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
         storage.save()
         return jsonify({}), 200
     else:
@@ -53,9 +66,14 @@ def post_amenities():
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
     ament = Amenity(**json_data)
+<<<<<<< HEAD
     storage.new(amenity)
     storage.save()
     return jsonify(amenity.to_dict()), 201
+=======
+    storage.save()
+    return jsonify(ament.to_dict()), 201
+>>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],
