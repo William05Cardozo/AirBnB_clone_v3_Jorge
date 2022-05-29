@@ -59,8 +59,6 @@ def post_review(place_id=None):
         return jsonify({'error': "Missing user_id"}), 400
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
-    if "text" not in json_data.keys():
-        return jsonify({'error': "Missing text"}), 400
     user = storage.get("User", json_data['user_id'])
     if user is None:
         abort(404)
