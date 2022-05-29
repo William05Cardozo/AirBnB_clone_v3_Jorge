@@ -57,11 +57,13 @@ def post_review(place_id=None):
         return jsonify({'error': 'Not a JSON'}), 400
     if "user_id" not in json_data.keys():
         return jsonify({'error': "Missing user_id"}), 400
+    if "name" not in json_data.keys():
+        return jsonify({'error': "Missing name"}), 400
+    if "text" not in json_data.keys():
+        return jsonify({'error': "Missing text"}), 400
     user = storage.get("User", json_data['user_id'])
     if user is None:
         abort(404)
-    if "name" not in json_data.keys():
-        return jsonify({'error': "Missing name"}), 400
     json_data['place_id'] = place_id
     review = Review(**json_data)
     storage.save()
