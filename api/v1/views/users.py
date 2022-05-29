@@ -9,6 +9,7 @@ from flask import Flask, Blueprint, jsonify, abort, request
 from models import storage
 from models.amenities import Amenity
 from models.amenity import Amenity
+from models.user import User
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
@@ -21,7 +22,7 @@ def get_users(user_id=None):
     if user_id is None:
         for val_user in storage.all("User").values():
             list_user.append(val_user.to_dict())
-        return jsonify(list_user), 200
+        return jsonify(list_user)
     else:
         user = storage.get("User", user_id)
         if user is not None:
@@ -35,7 +36,7 @@ def get_users(user_id=None):
 def delete_users(user_id=None):
     """delete method user"""
 
-    user = storage.get("Amenity", amenity_id)
+    user = storage.get("User", user_id)
     if user is not None:
         storage.delete(user)
         storage.save()

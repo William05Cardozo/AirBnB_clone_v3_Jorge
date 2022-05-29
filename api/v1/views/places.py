@@ -56,11 +56,11 @@ def post_place(city_id=None):
         return jsonify({'error': 'Not a JSON'}), 400
     if "user_id" not in json_data.keys():
         return jsonify({'error': "Missing user_id"}), 400
+    if "name" not in json_data.keys():
+        return jsonify({'error': "Missing name"}), 400
     user = storage.get("User", json_data['user_id'])
     if user is None:
         abort(404)
-    if "name" not in json_data.keys():
-        return jsonify({'error': "Missing name"}), 400
     json_data['city_id'] = city_id
     place = Place(**json_data)
     storage.save()
@@ -77,8 +77,7 @@ def put_place(place_id=None):
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
     for key, value in json_data.items():
-        if key != "__class__" and key != "id" and key != "user_id" and\
-           key != "city_id" and key != "created_at" and key != "updated_at":
+        if key != "__class__":
             setattr(place, key, value)
     storage.save()
     return jsonify(place.to_dict()), 200
