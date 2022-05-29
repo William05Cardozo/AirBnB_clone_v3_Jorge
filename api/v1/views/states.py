@@ -38,6 +38,7 @@ def delete_states(state_id=None):
     state = storage.get("State", state_id)
     if state is not None:
         storage.delete(state)
+        storage.save()
         return jsonify({}), 200
     else:
         abort(404)
@@ -66,7 +67,7 @@ def put_states(state_id=None):
         abort(404)
     json_data = request.get_json()
     if not json_data:
-        return jsonify({'error': 'Not a JSON'}), 400
+        return jsonify({'error':'Not a JSON'}), 400
     for key, value in json_data.items():
         if key != "__class__":
             setattr(p_state, key, value)
