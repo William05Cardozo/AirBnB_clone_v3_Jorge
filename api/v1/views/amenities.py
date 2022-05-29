@@ -35,8 +35,13 @@ def delete_amenities(amenity_id=None):
     """delete method amenities"""
 
     ament = storage.get("Amenity", amenity_id)
+<<<<<<< HEAD
     if amenity is not None:
         storage.delete(amenity)
+=======
+    if ament is not None:
+        storage.delete(ament)
+>>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
         storage.save()
         return jsonify({}), 200
     else:
@@ -53,9 +58,14 @@ def post_amenities():
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
     ament = Amenity(**json_data)
+<<<<<<< HEAD
     storage.new(amenity)
     storage.save()
     return jsonify(amenity.to_dict()), 201
+=======
+    storage.save()
+    return jsonify(ament.to_dict()), 201
+>>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],

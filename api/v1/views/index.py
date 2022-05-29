@@ -20,7 +20,7 @@ def stats():
             "amenities": storage.count(storage.classes['Amenities']),
             "cities": storage.count(storage.classes['City']),
             "places": storage.count(storage.classes['Place']),
-            "revies": storage.count(storage.classes['Review']),
+            "reviews": storage.count(storage.classes['Review']),
             "states": storage.count(storage.classes['State']),
             "users": storage.count(storage.classes['User'])
             }
