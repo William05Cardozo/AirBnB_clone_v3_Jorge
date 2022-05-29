@@ -9,6 +9,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.place import Place
 
+
 @app_views.route("/cities/<city_id>/places", methods=['GET'],
                  strict_slashes=False)
 def get_places_city(city_id=None):
