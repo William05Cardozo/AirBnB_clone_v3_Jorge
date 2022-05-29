@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!rusr/bin/python3
 """
 Module app
 """
