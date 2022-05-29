@@ -7,15 +7,9 @@ all default RESTFul API actions
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, abort, request
 from models import storage
-<<<<<<< HEAD
-<<<<<<< HEAD
 from models.amenities import Amenity
-=======
 from models.amenity import Amenity
->>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
-=======
 from models.amenity import Amenity
->>>>>>> storage_get_count
 
 
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
@@ -30,18 +24,12 @@ def get_amenities(amenity_id=None):
             list_amt.append(val_amt.to_dict())
         return jsonify(list_amt), 200
     else:
-<<<<<<< HEAD
-<<<<<<< HEAD
         amenit = storage.get("Amenity", amenity_id)
         if amenit is not None:
-=======
-        amenity = storage.get("Amenity", amenity_id)
+            amenity = storage.get("Amenity", amenity_id)
         if amenity is not None:
->>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
-=======
-        amenity = storage.get("Amenity", amenity_id)
+            amenity = storage.get("Amenity", amenity_id)
         if amenity is not None:
->>>>>>> storage_get_count
             return jsonify(amenity.to_dict())
         else:
             abort(404)
@@ -53,20 +41,12 @@ def delete_amenities(amenity_id=None):
     """delete method amenities"""
 
     ament = storage.get("Amenity", amenity_id)
-<<<<<<< HEAD
     if ament is not None:
-<<<<<<< HEAD
         storage.delete(amenity)
-=======
-=======
-<<<<<<< HEAD
     if amenity is not None:
         storage.delete(amenity)
-=======
     if ament is not None:
->>>>>>> storage_get_count
         storage.delete(ament)
->>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
         storage.save()
         return jsonify({}), 200
     else:
@@ -83,14 +63,11 @@ def post_amenities():
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
     ament = Amenity(**json_data)
-<<<<<<< HEAD
     storage.new(amenity)
     storage.save()
     return jsonify(amenity.to_dict()), 201
-=======
     storage.save()
     return jsonify(ament.to_dict()), 201
->>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],

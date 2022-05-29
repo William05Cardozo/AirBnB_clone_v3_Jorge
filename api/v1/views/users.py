@@ -7,11 +7,8 @@ all default RESTFul API actions
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, abort, request
 from models import storage
-<<<<<<< HEAD
 from models.amenities import Amenity
-=======
 from models.amenity import Amenity
->>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
@@ -54,19 +51,16 @@ def post_users():
     json_data = request.get_json()
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
-<<<<<<< HEAD
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
     user = User(**json_data)
     storage.new(user)
-=======
     if "email" not in json_data.keys():
         return jsonify({'error': "Missing email"}), 400
 
     if "password" not in json_data.keys():
         return jsonify({'error': "Missing password"}), 400
     user = User(**json_data)
->>>>>>> 35aa7e0baab7d2187afc4013bf18cb87cf5f184b
     storage.save()
     return jsonify(user.to_dict()), 201
 
