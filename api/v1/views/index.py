@@ -13,7 +13,7 @@ def status():
     """status"""
     return jsonify({"status": "OK"})
 
-<<<<<<< HEAD
+
 @app_views.route("/stats", strict_slashes=False)
 def stats():
     dictt = {
@@ -25,16 +25,3 @@ def stats():
             "users": storage.count(storage.classes['User'])
             }
     return jsonify(dictt)
-=======
-
-@app_views.route('/stats', strict_slashes=False)
-def stats():
-    """methode stats"""
-    dictionary = {"amenities": storage.count('Amenity'),
-                  "cities": storage.count('City'),
-                  "places": storage.count('Place'),
-                  "reviews": storage.count('Review'),
-                  "states": storage.count('State'),
-                  "users": storage.count('User')}
-    return jsonify(dictionary)
->>>>>>> 46d82190873ca8fdba30b122e353b837706dd7ce
