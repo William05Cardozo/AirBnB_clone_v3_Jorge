@@ -45,9 +45,9 @@ def post_states():
     """post method states"""
     json_data = request.get_json()
     if not json_data:
-        return jsonify({'error': 'Not a JSON'}), 400
+        return jsonify({'Not a JSON'}), 400
     if "name" not in json_data.keys():
-        return jsonify({'error': "Missing name"}), 400
+        return jsonify({"Missing name"}), 400
     state = State(**json_data)
     storage.new(state)
     storage.save()
@@ -62,7 +62,7 @@ def put_states(state_id=None):
         abort(404)
     json_data = request.get_json()
     if not json_data:
-        return jsonify({'error': 'Not a JSON'}), 400
+        return jsonify({'Not a JSON'}), 400
     for key, value in json_data.items():
         if key != "__class__":
             setattr(p_state, key, value)
