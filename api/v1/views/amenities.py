@@ -7,8 +7,6 @@ all default RESTFul API actions
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, abort, request
 from models import storage
-from models.amenities import Amenity
-from models.amenity import Amenity
 from models.amenity import Amenity
 
 
@@ -24,11 +22,7 @@ def get_amenities(amenity_id=None):
             list_amt.append(val_amt.to_dict())
         return jsonify(list_amt), 200
     else:
-        amenit = storage.get("Amenity", amenity_id)
-        if amenit is not None:
-            amenity = storage.get("Amenity", amenity_id)
-        if amenity is not None:
-            amenity = storage.get("Amenity", amenity_id)
+        amenity = storage.get("Amenity", amenity_id)
         if amenity is not None:
             return jsonify(amenity.to_dict())
         else:
@@ -41,10 +35,13 @@ def delete_amenities(amenity_id=None):
     """delete method amenities"""
 
     ament = storage.get("Amenity", amenity_id)
+<<<<<<< HEAD
     if ament is not None:
         storage.delete(amenity)
     if amenity is not None:
         storage.delete(amenity)
+=======
+>>>>>>> master
     if ament is not None:
         storage.delete(ament)
         storage.save()
@@ -63,9 +60,8 @@ def post_amenities():
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
     ament = Amenity(**json_data)
-    storage.new(amenity)
     storage.save()
-    return jsonify(amenity.to_dict()), 201
+    return jsonify(ament.to_dict()), 201
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],
