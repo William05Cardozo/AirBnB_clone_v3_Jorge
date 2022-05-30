@@ -9,10 +9,7 @@ from flask import Flask, Blueprint, jsonify, abort, request
 from models import storage
 from models.amenities import Amenity
 from models.amenity import Amenity
-<<<<<<< HEAD
 from models.user import User
-=======
->>>>>>> f2277da912bb588292be38fbb65d804a749907ca
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)

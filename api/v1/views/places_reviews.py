@@ -60,13 +60,10 @@ def post_review(place_id=None):
     user = storage.get("User", json_data['user_id'])
     if user is None:
         abort(404)
-<<<<<<< HEAD
     if "name" not in json_data.keys():
         return jsonify({'error': "Missing name"}), 400
-=======
     if "text" not in json_data.keys():
         return jsonify({'error': "Missing text"}), 400
->>>>>>> 9805e3074667ed661b0c584125ea2fcc07546a60
     json_data['place_id'] = place_id
     review = Review(**json_data)
     storage.save()
@@ -84,12 +81,7 @@ def put_review(review_id=None):
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
     for key, value in json_data.items():
-<<<<<<< HEAD
-        if key != "__class__" and key != "id" and key != "user_id" and\
-           key != "city_id" and key != "created_at" and key != "updated_at":
-=======
         if key != "__class__":
->>>>>>> 9805e3074667ed661b0c584125ea2fcc07546a60
             setattr(review, key, value)
     storage.save()
     return jsonify(review.to_dict()), 200
