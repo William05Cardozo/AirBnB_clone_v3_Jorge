@@ -35,13 +35,10 @@ def delete_amenities(amenity_id=None):
     """delete method amenities"""
 
     ament = storage.get("Amenity", amenity_id)
-<<<<<<< HEAD
     if ament is not None:
         storage.delete(amenity)
     if amenity is not None:
         storage.delete(amenity)
-=======
->>>>>>> master
     if ament is not None:
         storage.delete(ament)
         storage.save()
