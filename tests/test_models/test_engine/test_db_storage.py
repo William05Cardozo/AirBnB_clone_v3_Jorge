@@ -104,6 +104,6 @@ class TestFileStorage(unittest.TestCase):
         dic = {"name": "Mexico", "state_id": state.id}
         city = City(**dic)
         storage.new(city)
-        storage.save()i
+        storage.save()
         c = storage.count()
         self.assertEqual(len(storage.all()), c)
