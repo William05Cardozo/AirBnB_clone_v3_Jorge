@@ -2,7 +2,6 @@
 """
 Contains the TestUserDocs classes
 """
-
 from datetime import datetime
 import inspect
 import models
@@ -59,6 +58,7 @@ class TestUserDocs(unittest.TestCase):
 
 class TestUser(unittest.TestCase):
     """Test the User class"""
+
     def test_is_subclass(self):
         """Test that User is a subclass of BaseModel"""
         user = User()
@@ -112,7 +112,7 @@ class TestUser(unittest.TestCase):
         for attr in u.__dict__:
             if attr is not "_sa_instance_state":
                 self.assertTrue(attr in new_d)
-        self.assertTrue("__class__" in new_d)
+                self.assertTrue("__class__" in new_d)
 
     def test_to_dict_values(self):
         """test that values in dict returned from to_dict are correct"""
