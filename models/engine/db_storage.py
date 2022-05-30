@@ -82,7 +82,11 @@ class DBStorage:
         for key, value in classes.items():
             if cls == value:
                 cls = key
+<<<<<<< HEAD
         key = cls + "." + id
+=======
+        key = "{}.{}".format(cls, id)
+>>>>>>> 2a08996d980bc8c2ecdf2173e95267e49377b75d
         if key in dictt:
             return(dictt[key])
         return(None)
