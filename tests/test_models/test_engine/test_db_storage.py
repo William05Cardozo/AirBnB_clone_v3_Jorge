@@ -87,7 +87,7 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
 
-"""
+
 class TestDBStorage(unittest.TestCase):
     """Test the FileStorage class"""
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
@@ -101,4 +101,3 @@ class TestDBStorage(unittest.TestCase):
         storage = DBStorage()
         new_city = City()
         self.assertIs(storage.get("City", new_city.id), new_city)
-        """
