@@ -89,6 +89,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_get_db(self):
         """ Tests method for obtaining an instance db storage"""
+        storage = DBStorage()
         dic = {"name": "Cundinamarca"}
         instance = State(**dic)
         storage.new(instance)
@@ -98,6 +99,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_count(self):
         """ Tests count method db storage """
+        storage = DBStorage()
         dic = {"name": "Vecindad"}
         state = State(**dic)
         storage.new(state)
