@@ -87,6 +87,7 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
 
+
 class TestDBStorage(unittest.TestCase):
     """Test the FileStorage class"""
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
@@ -94,14 +95,14 @@ class TestDBStorage(unittest.TestCase):
         """Test that all returns a dictionaty"""
         self.assertIs(type(models.storage.all()), dict)
         @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
-                "not testing file storage")
+                         "not testing file storage")
     def test_get(self):
         """Test that the get method properly retrievs objects"""
         storage = DBStorage()
         new_city = City()
         self.assertIs(storage.get("City", new_city.id), new_city)
 
-        def test_get(self):
+    def test_get(self):
         """check if get method returns state"""
         real_state = storage.get("State", self.state.id)
         fake_state = storage.get("State", "12345")
