@@ -87,6 +87,7 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
 
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get_db(self):
         """ Tests method for obtaining an instance db storage"""
         storage = DBStorage()
@@ -97,7 +98,19 @@ class TestFileStorage(unittest.TestCase):
         get_instance = storage.get(State, instance.id)
         self.assertEqual(get_instance, instance)
 
-    def test_count(self):
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_GET(self):
+        """"test a request get"""
+        storage = DBStorage()
+        new_obj = State()
+        storage.save()
+        result = storage.get('State', new_obj.id)
+        self.assertIsNotNone(result)
+        self.assertIsInstance(type(result), State)
+        self.assertIs(new_obj, result)
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_count_db(self):
         """ Tests count method db storage """
         storage = DBStorage()
         dic = {"name": "Vecindad"}
@@ -109,3 +122,13 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         c = storage.count()
         self.assertEqual(len(storage.all()), c)
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_count(self):
+        """test a response count"""
+        storage = DBStorage()
+        cant = len(storage.all())
+        result = storage.count()
+        new_obj = State()
+        self.assertEquals(cant, result)
+        self.assertIsInstance(type(new_obj), State)
